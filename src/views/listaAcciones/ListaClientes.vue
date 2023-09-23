@@ -379,7 +379,7 @@ export default {
         const selectedOrder = this.selectedOrder;
 
 
-        const response = await axios.post("/getListaClientes", {
+        const response = await axios.post("https://eurekacrm-server.onrender.com/getListaClientes", {
           // Enviar los parámetros al servidor
           txtIdCliente,
           txtProducto,

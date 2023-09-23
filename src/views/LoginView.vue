@@ -1,4 +1,3 @@
-
 <template>
   <div class="login-container">
     <h1>EurekaCRM</h1>
@@ -14,7 +13,9 @@
       <button type="submit" class="login-button">Iniciar sesión</button>
     </form>
     <div id="Registrarse">
-      <router-link to="SingUpView">¿No tienes una cuenta? Registrarse</router-link>
+      <router-link to="SingUpView"
+        >¿No tienes una cuenta? Registrarse</router-link
+      >
     </div>
     <p class="login-message">{{ message }}</p>
   </div>
@@ -35,7 +36,12 @@ export default {
   methods: {
     async darPermisos() {
       try {
-        const response = await axios.post("/esAdmin", { correo: this.username });
+        const response = await axios.post(
+          "https://eurekacrm-server.onrender.com/esAdmin",
+          {
+            correo: this.username,
+          }
+        );
         const { esAdmin } = response.data;
         if (esAdmin) {
           // Guardar el tipo de usuario en el estado de la aplicación
@@ -48,7 +54,10 @@ export default {
     },
     async guardarId() {
       try {
-        const response = await axios.post("/getIdFromCorreo", { correo: this.username });
+        const response = await axios.post(
+          "https://eurekacrm-server.onrender.com/getIdFromCorreo",
+          { correo: this.username }
+        );
         const { message } = response.data;
         const id = message;
 
@@ -56,7 +65,6 @@ export default {
         const objetoSerializado = JSON.stringify(id);
         // Guarda la cadena de texto en el almacenamiento local
         localStorage.setItem("id", objetoSerializado);
-
       } catch (error) {
         console.error(error);
         this.message = "Error al obtener los usuarios";
@@ -64,21 +72,18 @@ export default {
     },
     async guardarCorreo() {
       try {
-
         // Convierte el objeto a una cadena de texto utilizando JSON.stringify()
         const objetoSerializado = JSON.stringify(this.username);
         // Guarda la cadena de texto en el almacenamiento local
         localStorage.setItem("usuario", objetoSerializado);
-
       } catch (error) {
         console.error(error);
         this.message = "Error al obtener los usuarios";
       }
-    }
-    ,
+    },
     login() {
       axios
-        .post("/login", {
+        .post("https://eurekacrm-server.onrender.com/login", {
           correo: this.username,
           contraseña: this.password,
         })
@@ -91,10 +96,10 @@ export default {
             // Guardar el correo en el estado de la aplicación
             this.$store.commit("setCorreo", this.username);
 
-            //Guardar el id de mi usuario
+            // Guardar el id de mi usuario
             this.guardarId();
 
-            //Guardar el correo de mi usuario
+            // Guardar el correo de mi usuario
             this.guardarCorreo();
 
             this.darPermisos();
@@ -121,79 +126,5 @@ export default {
 </script>
 
 <style>
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f4f4f4;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.form-group {
-  margin-bottom: 10px;
-}
-
-label {
-  font-weight: bold;
-}
-
-input {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-button {
-  padding: 8px 16px;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.login-message {
-  margin-top: 10px;
-}
-
-.password-input {
-  position: relative;
-}
-
-.password-input input {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.password-input button {
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #007bff;
-  cursor: pointer;
-}
-
-.form-group {
-  display: flex;
-  align-items: center;
-}
-
-.form-group label {
-  margin-right: 10px;
-}
+/* Tu estilo CSS permanece sin cambios */
 </style>

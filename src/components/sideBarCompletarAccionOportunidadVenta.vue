@@ -250,7 +250,7 @@ export default {
     },
     async getIdDeCorreo(correo) {
       try {
-        const response = await axios.post("/getIdFromCorreo", {
+        const response = await axios.post("https://eurekacrm-server.onrender.com/getIdFromCorreo", {
           correo: correo,
         });
         const { message } = response.data;
@@ -273,7 +273,7 @@ export default {
       };
 
       try {
-        const response = await axios.post("/agendarAccionAutomatica2", parametros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/agendarAccionAutomatica2", parametros);
         const { message } = response.data;
         console.log(message);
         alert("Se ha generado la segunda acción automática para esta oportunidad de venta.\nAcción=> Enviar correo informativo EUREKA");
@@ -293,7 +293,7 @@ export default {
       };
 
       try {
-        const response = await axios.post("/agendarAccionAutomatica3", parametros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/agendarAccionAutomatica3", parametros);
         const { message } = response.data;
         console.log(message);
         alert("Se ha generado la tercera acción automática para esta oportunidad de venta.\nAcción=> LLamada para coonocer si el cliente entendió la información");
@@ -313,7 +313,7 @@ export default {
       };
 
       try {
-        const response = await axios.post("/agendarAccionAutomatica4", parametros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/agendarAccionAutomatica4", parametros);
         const { message } = response.data;
         console.log(message);
         alert("Se ha generado la cuarta acción automática para esta oportunidad de venta.\nAcción=> MAIL TIPO: enviar DEMO del software sin TPV");
@@ -333,7 +333,7 @@ export default {
       };
 
       try {
-        const response = await axios.post("/agendarAccionAutomatica5", parametros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/agendarAccionAutomatica5", parametros);
         const { message } = response.data;
         console.log(message);
         alert("Se ha generado la quinta acción automática para esta oportunidad de venta.\nAcción=> LLamada: Conocer si ha entendido la DEMO y si no explicarsela");
@@ -353,7 +353,7 @@ export default {
       };
 
       try {
-        const response = await axios.post("/agendarAccionAutomatica6", parametros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/agendarAccionAutomatica6", parametros);
         const { message } = response.data;
         console.log(message);
         alert("Se ha generado la sexta acción automática para esta oportunidad de venta.\nAcción=> LLamada: Cerrar la operación de venta");
@@ -378,7 +378,7 @@ export default {
       };
 
       try {
-        const response = await axios.post("/completarAccionAutomaticaPaso1", parametros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/completarAccionAutomaticaPaso1", parametros);
         const { message } = response.data;
         console.log(message);
        // this.cancelForm();
@@ -403,7 +403,7 @@ export default {
   };
 
   try {
-    const response = await axios.post("/completarAccionAutomaticaPaso6", parametros);
+    const response = await axios.post("https://eurekacrm-server.onrender.com/completarAccionAutomaticaPaso6", parametros);
     const { message } = response.data;
     console.log(message);
    // this.cancelForm();
@@ -439,7 +439,7 @@ export default {
         completada: 1
       };
       try {
-        const response = await axios.post("/completarAccionOportunidad", data);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/completarAccionOportunidad", data);
         const { message } = response.data;
         console.log(message);
         alert("Acción completada correctamente");

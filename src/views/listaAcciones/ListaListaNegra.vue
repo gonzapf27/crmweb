@@ -403,7 +403,7 @@ export default {
 
                 const selectedOrder = this.selectedOrder;
 
-                const response = await axios.post("/getListaNegra", {
+                const response = await axios.post("https://eurekacrm-server.onrender.com/getListaNegra", {
                     // Enviar los parámetros al servidor
                     fechaDesde: fechaDesde,
                     fechaHasta: fechaHasta,

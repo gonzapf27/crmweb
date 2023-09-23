@@ -284,7 +284,7 @@ export default {
     async getIdDeCorreo(correo) {
       try {
 
-        const response = await axios.post("/getIdFromCorreo", { correo: correo });
+        const response = await axios.post("https://eurekacrm-server.onrender.com/getIdFromCorreo", { correo: correo });
         const { message } = response.data;
         const id = message;
         return id;
@@ -303,7 +303,7 @@ export default {
           telefono1: this.getTelefono1(),
           telefono2: this.getTelefono2()
         };
-        const response = await axios.post("/estaEnListaNegra", parametros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/estaEnListaNegra", parametros);
         const { numeroOcurrencias } = response.data;
 
         if (numeroOcurrencias > 0) {
@@ -335,7 +335,7 @@ export default {
         };
 
         try {
-          const response = await axios.post("/asignarOportunidadAComercial", parametros);
+          const response = await axios.post("https://eurekacrm-server.onrender.com/asignarOportunidadAComercial", parametros);
           const { message } = response.data;
           console.log(message);
           //TODO: comprobar si la oportunidad ya está asignada a otra persona, en cuyo caso, no crear acciones automáticas nuevas,
@@ -371,7 +371,7 @@ export default {
       };
 
       try {
-        const responseAccion = await axios.post("/crearContacto", paramsAccion);
+        const responseAccion = await axios.post("https://eurekacrm-server.onrender.com/crearContacto", paramsAccion);
 
         if (responseAccion.data.confirmacion) {
           // Si hay duplicados, mostrar mensaje de confirmación al usuario
@@ -379,7 +379,7 @@ export default {
 
           if (confirmacion) {
             // Si el usuario confirma, crear el contacto de todos modos
-            const resultado = await axios.post("/crearContacto", paramsAccion);
+            const resultado = await axios.post("https://eurekacrm-server.onrender.com/crearContacto", paramsAccion);
             console.log(resultado.data.message);
           } else {
             console.log("Creación de contacto cancelada por el usuario.");
@@ -408,7 +408,7 @@ export default {
         };
 
         try {
-          const response = await axios.post("/agendarAccionAutomatica1", parametros);
+          const response = await axios.post("https://eurekacrm-server.onrender.com/agendarAccionAutomatica1", parametros);
           const { message } = response.data;
           alert(message);
           this.cancelForm();
@@ -428,7 +428,7 @@ export default {
       };
 
       try {
-        const response = await axios.post("/denegarOportunidadATodos", parametros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/denegarOportunidadATodos", parametros);
         const { message } = response.data;
         console.log(message);
         alert("Oportunidad denegada a todos los comerciales");
@@ -450,7 +450,7 @@ export default {
     },
     async ocultarOportunidad(id) {
       try {
-        const response = await axios.post("/ocultarOportunidad", { id });
+        const response = await axios.post("https://eurekacrm-server.onrender.com/ocultarOportunidad", { id });
         const { message } = response.data;
         console.log(message);
       } catch (error) {
@@ -472,7 +472,7 @@ export default {
       };
 
       try {
-        const responseAccion = await axios.post("/crearCliente", paramsAccion);
+        const responseAccion = await axios.post("https://eurekacrm-server.onrender.com/crearCliente", paramsAccion);
         const { message } = responseAccion.data;
         console.log(message);
       } catch (error) {
@@ -527,7 +527,7 @@ export default {
       };
 
       try {
-        const responseAccion = await axios.post("/agendarAccion", data);
+        const responseAccion = await axios.post("https://eurekacrm-server.onrender.com/agendarAccion", data);
         const { message } = responseAccion.data;
         console.log(message);
         alert("Acción agendada correctamente");
@@ -564,7 +564,7 @@ export default {
       };
 
       try {
-        const response = await axios.post("/registrarAccionOportunidad", data);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/registrarAccionOportunidad", data);
         const { message } = response.data;
         console.log(message);
         alert("Acción registrada correctamente");
@@ -607,7 +607,7 @@ export default {
 
       //Registrar la acción
       try {
-        const response = await axios.post("/registrarAccionOportunidad", data);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/registrarAccionOportunidad", data);
         const { message } = response.data;
         console.log(message);
         alert("Acción registrada correctamente");
@@ -626,7 +626,7 @@ export default {
         fechaAñoCreacion: fechaAñoActual
       };
       try {
-        const responseListaNegra = await axios.post("/enviarAListaNegraFromIdOportunidad", dataListaNegra);
+        const responseListaNegra = await axios.post("https://eurekacrm-server.onrender.com/enviarAListaNegraFromIdOportunidad", dataListaNegra);
         const { message } = responseListaNegra.data;
         console.log(message);
         alert("Se ha enviado la oportunidad a la lista negra.");

@@ -503,7 +503,7 @@ export default {
         const opcionEmitidoORecibido = this.opcionEmitidoORecibido;
         const selectedOrder = this.selectedOrder;
 
-        const response = await axios.post("/getListaAccionesOportunidades", {
+        const response = await axios.post("https://eurekacrm-server.onrender.com/getListaAccionesOportunidades", {
           // Enviar los parámetros al servidor
           fechaDesde,
           fechaHasta,

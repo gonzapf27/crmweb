@@ -101,7 +101,7 @@ export default {
           telefono1: this.formulario.telefono1,
           telefono2: this.formulario.telefono2
         };
-        const response = await axios.post("/estaEnListaNegra", parametros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/estaEnListaNegra", parametros);
         const { numeroOcurrencias } = response.data;
 
         if (numeroOcurrencias > 0) {
@@ -149,7 +149,7 @@ export default {
       };
 
       try {
-        const response = await axios.post("/anadirOportunidadVenta", parametros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/anadirOportunidadVenta", parametros);
         const { message } = response.data;
         console.log(message);
         alert("Oportunidad de venta añadida correctamente");

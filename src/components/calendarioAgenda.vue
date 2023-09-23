@@ -58,7 +58,7 @@ export default {
         info.event.extendedProps.idAccionOportunidadVenta;
 
       //Guardamos el objeto de la oportunidadVenta seleccionada extraido desde la SQL
-      const response = await axios.post("/getAccionOportunidadVentaFromId", {
+      const response = await axios.post("https://eurekacrm-server.onrender.com/getAccionOportunidadVentaFromId", {
         // Enviar los parámetros al servidor
         idAccionOportunidadVenta,
       });
@@ -143,7 +143,7 @@ export default {
           this.getMiId(),
         ];
 
-        const response = await axios.post("/query", {
+        const response = await axios.post("https://eurekacrm-server.onrender.com/query", {
           query: query,
           parametros: parametros,
         });

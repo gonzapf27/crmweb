@@ -678,7 +678,7 @@ export default {
         };
 
         // Realizar la petición POST al servidor con los filtros
-        const response = await axios.post("/getOportunidades", filtros);
+        const response = await axios.post("https://eurekacrm-server.onrender.com/getOportunidades", filtros);
 
         const { message } = response.data;
         this.usuarios = JSON.parse(message);

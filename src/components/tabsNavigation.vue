@@ -63,7 +63,7 @@ export default {
         const data = {
         id
       };
-        const responseAccion = await axios.post("/getNTareasPendientesFromId", data);
+        const responseAccion = await axios.post("https://eurekacrm-server.onrender.com/getNTareasPendientesFromId", data);
         const { message } = responseAccion.data;
         return message;
       } catch (error) {
