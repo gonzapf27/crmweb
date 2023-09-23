@@ -1,17 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <TabsNavigation v-if="$store.state.correo !== null" /> <!-- Aquí se muestra el componente Tabs.vue -->
+    <img
+      v-if="$store.state.correo !== null"
+      src="./assets/eureka_logo.png"
+      alt="Eureka Logo"
+      class="banner"
+    >
+    <h2 v-if="$store.state.correo !== null" >{{ pageTitle }} </h2>
+    <hr>
+
+    <router-view />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TabsNavigation from './components/tabsNavigation.vue';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  components: { TabsNavigation },
+  computed: {
+    pageTitle() {
+      // Obtén el valor del correo desde el estado de la aplicación
+      const correo = this.$store.state.correo;
+
+      // Personaliza el título según tus necesidades
+      return `Bienvenido, ${correo}!`;
+    },
+  },
+  created() {
+    // Verifica si el correo está almacenado en localStorage o en una cookie y establece el estado de la aplicación correspondientemente
+    const correo = localStorage.getItem("correo");
+    if (correo) {
+      this.$store.commit("setCorreo", correo);
+    }
   }
-}
+};
 </script>
 
 <style>
@@ -21,6 +45,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
