@@ -1,17 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-//import HomeView from '../views/HomeView.vue'
 import LoginView from "../views/LoginView.vue";
-import SignUpView from "../views/SingUpView.vue"; // Importa el componente SignUpView
-import HomeView from "../views/HomeView.vue"; // Importa el componente SignUpView
-import OportunidadesView from "../views/OportunidadesView.vue"; // Importa el componente SignUpView
+import SignUpView from "../views/SingUpView.vue";
+import HomeView from "../views/HomeView.vue";
+import OportunidadesView from "../views/OportunidadesView.vue";
 import TareasPendientesView from "../views/TareasPendientesView.vue";
 import ListaAccionesView from "../views/ListaAccionesView.vue";
 import ListaClientesView from "../views/listaAcciones/ListaClientes.vue";
 
 const routes = [
   {
-    path: "/LoginView",
+    path: "/",
     name: "LoginView",
     component: LoginView,
   },
@@ -52,4 +51,4 @@ const router = createRouter({
   routes,
 });
 
-export default router; // Exporta la instancia del enrutador
+export default router;
